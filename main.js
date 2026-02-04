@@ -15,7 +15,7 @@ class LottoNumbers extends HTMLElement {
                 height: 50px;
                 border-radius: 50%;
                 background-color: var(--secondary-color);
-                color: var(--white-color);
+                color: var(--button-text-color);
                 font-size: 24px;
                 font-weight: bold;
                 margin: 0 5px;
@@ -30,10 +30,32 @@ class LottoNumbers extends HTMLElement {
 customElements.define('lotto-numbers', LottoNumbers);
 
 const generateBtn = document.getElementById('generate-btn');
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
 const lottoNumbersEl = document.querySelector('lotto-numbers');
 const historyList = document.getElementById('history-list');
 
 const history = [];
+const THEME_STORAGE_KEY = 'lotto-theme';
+
+function applyTheme(theme) {
+    const nextTheme = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = nextTheme;
+    themeToggleBtn.textContent = nextTheme === 'dark' ? '화이트모드' : '다크모드';
+}
+
+function initializeTheme() {
+    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    applyTheme(initialTheme);
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+}
 
 function generateNumbers() {
     const numbers = new Set();
@@ -57,6 +79,8 @@ function updateHistory() {
 }
 
 generateBtn.addEventListener('click', generateNumbers);
+themeToggleBtn.addEventListener('click', toggleTheme);
 
 // Initial generation
+initializeTheme();
 generateNumbers();

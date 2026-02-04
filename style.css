@@ -8,6 +8,7 @@
     --list-item-bg: #f9f9f9;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --button-text-color: #ffffff;
+    --field-border-color: #cbd5e1;
 }
 
 :root[data-theme="dark"] {
@@ -19,6 +20,7 @@
     --list-item-bg: #374151;
     --shadow-color: rgba(0, 0, 0, 0.35);
     --button-text-color: #f9fafb;
+    --field-border-color: #4b5563;
 }
 
 body {
@@ -96,6 +98,11 @@ h1 {
     margin-top: 40px;
 }
 
+.partnership {
+    margin-top: 40px;
+    text-align: left;
+}
+
 h2 {
     color: var(--secondary-color);
     margin-bottom: 20px;
@@ -119,4 +126,55 @@ h2 {
 lotto-numbers {
     display: flex;
     gap: 10px;
+}
+
+.partnership-form {
+    display: grid;
+    gap: 10px;
+}
+
+.partnership-form label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.partnership-form input,
+.partnership-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--field-border-color);
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font: inherit;
+}
+
+.partnership-form textarea {
+    resize: vertical;
+}
+
+.partnership-form button {
+    background-color: var(--secondary-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 12px 18px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 24px;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    h1 {
+        text-align: center;
+    }
 }

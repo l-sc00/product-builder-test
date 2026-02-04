@@ -21,6 +21,24 @@
             <h2>생성 내역</h2>
             <ul id="history-list"></ul>
         </div>
+        <section class="partnership">
+            <h2>제휴 문의</h2>
+            <form action="https://formspree.io/f/xkozdynr" method="POST" class="partnership-form">
+                <label for="partner-name">이름</label>
+                <input id="partner-name" name="name" type="text" required>
+
+                <label for="partner-email">이메일</label>
+                <input id="partner-email" name="email" type="email" required>
+
+                <label for="partner-company">회사명</label>
+                <input id="partner-company" name="company" type="text">
+
+                <label for="partner-message">문의 내용</label>
+                <textarea id="partner-message" name="message" rows="5" required></textarea>
+
+                <button type="submit">문의 보내기</button>
+            </form>
+        </section>
     </div>
     <script src="main.js"></script>
 </body>

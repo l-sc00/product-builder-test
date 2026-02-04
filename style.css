@@ -109,7 +109,9 @@ h1 {
 }
 
 #disqus_thread {
-    background-color: var(--surface-color);
+    /* Keep comments readable even in dark mode (Disqus text can stay dark). */
+    background-color: #ffffff;
+    color: #111827;
     border-radius: 8px;
     padding: 8px;
 }
